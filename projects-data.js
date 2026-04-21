@@ -73,6 +73,15 @@ const PROJECTS = {
             ],
         },
         {
+            title: "Starlink Connectivity for Remote Mining Sites",
+            note: "Satellite telemetry for isolated assets",
+            image: "",
+            url: "",
+            description: "Architected and deployed a satellite-based connectivity solution for a remote customer site that had no access to wifi or cellular networks. Flew out to the site and rigged a wifi antenna to the machine, connected it to the machine's ECM over ethernet, and configured it to communicate with the radio.",
+            details: "The deployment was a successful proof of concept demonstrating that Starlink could provide reliable telemetry uplinks for geographically isolated heavy equipment. This opened the door for telematics data collection at sites that were previously unreachable, allowing fleet managers to monitor machine health and productivity regardless of location.",
+            tech: ["Starlink", "Networking", "Telematics Hardware", "ECM Configuration"],
+        },
+        {
             title: "Print Check Tool",
             note: "Engineering drawing verification tool",
             image: "",
