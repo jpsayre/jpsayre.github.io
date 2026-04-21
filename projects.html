@@ -178,6 +178,14 @@
                     html += '<p>' + p.details + '</p>';
                 }
 
+                if (p.patents && p.patents.length > 0) {
+                    html += '<h3>Patents</h3><ul>';
+                    p.patents.forEach(function(pat) {
+                        html += '<li><a href="' + pat.url + '" target="_blank">' + pat.number + '</a> — ' + pat.title + '</li>';
+                    });
+                    html += '</ul>';
+                }
+
                 if (p.tech && p.tech.length > 0) {
                     html += '<h3>Tech Stack</h3><ul>';
                     p.tech.forEach(function(t) {

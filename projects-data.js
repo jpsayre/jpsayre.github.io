@@ -16,7 +16,51 @@ const PROJECTS = {
             tech: ["Python", "SQL (SQL Server, Teradata)", "R / Radiant", "Tableau", "Logistic Regression, Decision Trees, K-Means, Mean Shift, Agglomerative Clustering"],
         },
     ],
-    engineering: [],
+    engineering: [
+        {
+            title: "994H/994K Hydraulic System Redesign",
+            image: "",
+            url: "",
+            description: "Led the clean-sheet redesign of the front-frame hydraulic system architecture for the 994H and 994K large wheel loaders — Caterpillar's largest production wheel loader platforms. Directed a 9-person team across onsite engineers, offshore detailers, and contractors, coordinating with structural, electrical, and manufacturing disciplines to release 800+ drawings on schedule.",
+            details: "Achieved $160K+ in annual cost savings through value engineering of hydraulic components and routing optimization. Doubled front-frame manufacturing throughput by redesigning hydraulic layouts to eliminate assembly bottlenecks. Performed FEA (structural, vibration, G-loading) on brackets and mounting systems to validate designs before prototype. Awarded 3 U.S. patents for innovations in hydraulic valve mounting and fitting design.",
+            tech: ["Creo/Pro-ENGINEER", "FEA (Structural, Vibration)", "GD&T", "Hydraulic System Design"],
+            patents: [
+                { number: "US 8,919,725", title: "Exterior mounting apparatus for interior component", url: "https://patents.google.com/patent/US8919725" },
+                { number: "US 8,936,228", title: "Load isolation bracket", url: "https://patents.google.com/patent/US8936228" },
+                { number: "US 9,096,990", title: "Hydraulic fitting with key-shaped cross section", url: "https://patents.google.com/patent/US9096990" },
+            ],
+        },
+        {
+            title: "Electrical Systems Integration — Large Wheel Loaders",
+            image: "",
+            url: "",
+            description: "Owned electrical system design and integration for multiple large wheel loader platforms (990K, 994K, 810/820 series). Responsibilities included harness routing, cable protection, sensor placement, controller integration, and telematics hardware installation.",
+            details: "Designed, modeled, and released production-ready electrical harnesses, cable routings, brackets, and mounting hardware in Creo/ProE with full GD&T documentation. Led both NPI (new product introduction) and CPI (continuous product improvement) efforts — creating new designs for production launches, then iterating based on factory build observations and field feedback to resolve rub, routing, cost, and quality issues. Awarded 1 U.S. patent for the Integrated Service Center design.",
+            tech: ["Creo/Pro-ENGINEER", "3D Harness Routing", "GD&T", "Teamcenter PLM"],
+            patents: [
+                { number: "US 8,905,172", title: "Integrated service center", url: "https://patents.google.com/patent/US8905172" },
+            ],
+        },
+        {
+            title: "MineStar Telematics — Field Deployment & Diagnostics",
+            image: "",
+            url: "",
+            description: "Owned end-to-end deployment of MineStar Fleet, MineStar Edge, and Cat Productivity telematics systems across 10+ customer sites with fleets of 5–15 machines each. This included parts procurement, system integration, installation, commissioning, and validation in harsh mining and construction environments.",
+            details: "Built Python-based monitoring tools and Tableau dashboards to track data quality, system health, and fleet performance — enabling proactive detection of hardware degradation and data gaps. Developed a DBSCAN clustering algorithm to detect geofence boundary drift by analyzing equipment position data, automatically alerting fleet managers when site boundaries needed updates. Architected satellite-based connectivity solutions (Starlink) for remote sites, enabling telemetry uplinks for geographically isolated assets.",
+            tech: ["Python", "SQL", "Tableau", "Telematics Hardware", "DBSCAN Clustering"],
+        },
+        {
+            title: "3D Quality Visualization Tool",
+            image: "",
+            url: "",
+            description: "Co-invented a system for evaluating quality characteristics in complex machine designs. The tool generates color-coded 3D model visualizations overlaid with engineering, cost, reliability, warranty, supplier, and logistics data — allowing reviewers to quickly assess quality metrics across machines with hundreds of parts from multiple manufacturers.",
+            details: "A key innovation was processing machine design data through concurrent node-branch operations rather than sequential processing, reducing analysis time by up to 90% depending on design complexity. Awarded U.S. patent.",
+            tech: ["3D Visualization", "Data Integration", "Quality Engineering"],
+            patents: [
+                { number: "US 11,308,245", title: "Systems and methods for facilitating evaluation of characteristics related to quality", url: "https://patents.google.com/patent/US20200218784A1" },
+            ],
+        },
+    ],
     design: [
         {
             title: "3D Printed Headphones",

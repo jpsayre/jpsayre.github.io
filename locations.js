@@ -66,4 +66,6 @@ const LOCATIONS = [
     { name: "Boundary Waters, MN, USA", lat: 48.0500, lng: -91.5000 },
     { name: "Traverse City, MI, USA", lat: 44.7631, lng: -85.6206 },
     { name: "St. Louis, MO, USA", lat: 38.6270, lng: -90.1994 },
+    { name: "Hilo, HI, USA", lat: 19.7297, lng: -155.0900 },
+    { name: "Kona, HI, USA", lat: 19.6400, lng: -155.9969 },
 ];
