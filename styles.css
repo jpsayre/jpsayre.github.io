@@ -324,9 +324,9 @@ footer .footer-links {
 /* Ledger row */
 .ledger-row {
     display: grid;
-    grid-template-columns: 60px 1fr 100px;
+    grid-template-columns: 60px 1fr 200px;
     gap: 28px;
-    align-items: baseline;
+    align-items: start;
     padding: 22px 0;
 }
 
@@ -353,11 +353,16 @@ footer .footer-links {
     margin-top: 4px;
 }
 
-.ledger-year {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    opacity: 0.65;
-    text-align: right;
+.ledger-image {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ledger-image img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    filter: saturate(0.92) contrast(1.03);
 }
 
 .ledger-details {
@@ -704,16 +709,15 @@ footer .footer-links {
 
     .ledger-row {
         grid-template-columns: 1fr;
-        gap: 4px;
+        gap: 12px;
     }
 
     .ledger-num {
         display: none;
     }
 
-    .ledger-year {
-        text-align: left;
-        margin-top: 4px;
+    .ledger-image {
+        max-width: 100%;
     }
 
     .photo-grid {

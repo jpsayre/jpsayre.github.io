@@ -94,6 +94,11 @@
                     detailsHtml += '</ul>';
                 }
 
+                var imageHtml = '';
+                if (p.image) {
+                    imageHtml = '<div class="ledger-image"><img src="' + p.image + '" alt="' + p.title + '" loading="lazy"></div>';
+                }
+
                 row.innerHTML =
                     '<span class="ledger-num">№ ' + num + '</span>' +
                     '<div>' +
@@ -102,7 +107,7 @@
                         (p.url ? '<div class="ledger-note"><a href="' + p.url + '" target="_blank">' + p.url.replace('https://', '') + '</a></div>' : '') +
                         '<div class="ledger-details" id="detail-' + category + '-' + i + '">' + detailsHtml + '</div>' +
                     '</div>' +
-                    '<span class="ledger-year">' + year + '</span>';
+                    imageHtml;
 
                 row.addEventListener("click", function(e) {
                     if (e.target.tagName === "A") return;
