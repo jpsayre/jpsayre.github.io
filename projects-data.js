@@ -8,6 +8,13 @@ const PROJECTS = {
             details: "The core pipeline runs 11 stages — from data ingestion and permit classification through walk-forward machine learning validation using an ensemble of models (LASSO, Random Forest, Gradient Boosting, LightGBM, Neural Net, and a Stacked Ensemble). Currently live for Boulder County, CO with San Diego, CA in progress. The customer-facing app is built with Next.js 14 and Supabase, featuring an interactive map explorer, home detail views, and a follow/alerts system for tracking properties.",
             tech: ["Python", "Next.js 14 + Supabase", "Google Sunroof API, Census ACS, Regrid", "scikit-learn, LightGBM"],
         },
+        {
+            title: "Predictive Component Failure Analysis",
+            image: "",
+            description: "Georgia Tech capstone project sponsored by Caterpillar. Built a predictive analytics system to identify heavy equipment likely to experience major component failures (hydraulic, engine, and transmission) before they occurred. The goal was to enable proactive maintenance, reducing unplanned downtime and costs.",
+            details: "Aggregated multiple data sources — telematics events, oil sampling lab results, work order history, daily machine summaries, and operational metrics — into 30-day grouped feature sets per machine. Explored supervised learning approaches (logistic regression, decision trees) and unsupervised clustering techniques (K-Means, Mean Shift, Agglomerative). Clustering proved most effective at surfacing failure patterns given the limited labeled failure data. Also developed a Mean Time Between Failure model and built custom data pipelines to pull and merge data from SQL Server and Teradata cloud databases.",
+            tech: ["Python", "SQL (SQL Server, Teradata)", "R / Radiant", "Tableau", "Logistic Regression, Decision Trees, K-Means, Mean Shift, Agglomerative Clustering"],
+        },
     ],
     engineering: [],
     design: [
