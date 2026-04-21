@@ -2,6 +2,8 @@ const PROJECTS = {
     data: [
         {
             title: "Solar Intel",
+            year: "2024",
+            note: "ML lead-gen for residential solar",
             url: "https://getsolarintel.com",
             image: "",
             description: "A lead-generation platform that ranks residential properties by their likelihood of installing solar in the next 12 months. The system ingests parcel data, municipal permit records, Google Sunroof roof geometry, Census demographics, and economic indicators to produce ranked lists of high-probability homes for solar installers.",
@@ -10,6 +12,8 @@ const PROJECTS = {
         },
         {
             title: "Predictive Component Failure Analysis",
+            year: "2020",
+            note: "GT Analytics capstone · Caterpillar",
             image: "",
             description: "Georgia Tech capstone project sponsored by Caterpillar. Built a predictive analytics system to identify heavy equipment likely to experience major component failures (hydraulic, engine, and transmission) before they occurred. The goal was to enable proactive maintenance, reducing unplanned downtime and costs.",
             details: "Aggregated multiple data sources — telematics events, oil sampling lab results, work order history, daily machine summaries, and operational metrics — into 30-day grouped feature sets per machine. Explored supervised learning approaches (logistic regression, decision trees) and unsupervised clustering techniques (K-Means, Mean Shift, Agglomerative). Clustering proved most effective at surfacing failure patterns given the limited labeled failure data. Also developed a Mean Time Between Failure model and built custom data pipelines to pull and merge data from SQL Server and Teradata cloud databases.",
@@ -19,6 +23,8 @@ const PROJECTS = {
     engineering: [
         {
             title: "994H/994K Hydraulic System Redesign",
+            year: "2013",
+            note: "Large wheel loader · 3 patents",
             image: "",
             url: "",
             description: "Led the clean-sheet redesign of the front-frame hydraulic system architecture for the 994H and 994K large wheel loaders — Caterpillar's largest production wheel loader platforms. Directed a 9-person team across onsite engineers, offshore detailers, and contractors, coordinating with structural, electrical, and manufacturing disciplines to release 800+ drawings on schedule.",
@@ -31,7 +37,9 @@ const PROJECTS = {
             ],
         },
         {
-            title: "Electrical Systems Integration — Large Wheel Loaders",
+            title: "Electrical Systems Integration",
+            year: "2015",
+            note: "990K / 994K / 810 series · 1 patent",
             image: "",
             url: "",
             description: "Owned electrical system design and integration for multiple large wheel loader platforms (990K, 994K, 810/820 series). Responsibilities included harness routing, cable protection, sensor placement, controller integration, and telematics hardware installation.",
@@ -42,7 +50,9 @@ const PROJECTS = {
             ],
         },
         {
-            title: "MineStar Telematics — Field Deployment & Diagnostics",
+            title: "MineStar Telematics Deployment",
+            year: "2019",
+            note: "10+ customer sites",
             image: "",
             url: "",
             description: "Owned end-to-end deployment of MineStar Fleet, MineStar Edge, and Cat Productivity telematics systems across 10+ customer sites with fleets of 5–15 machines each. This included parts procurement, system integration, installation, commissioning, and validation in harsh mining and construction environments.",
@@ -51,6 +61,8 @@ const PROJECTS = {
         },
         {
             title: "3D Quality Visualization Tool",
+            year: "2020",
+            note: "1 patent",
             image: "",
             url: "",
             description: "Co-invented a system for evaluating quality characteristics in complex machine designs. The tool generates color-coded 3D model visualizations overlaid with engineering, cost, reliability, warranty, supplier, and logistics data — allowing reviewers to quickly assess quality metrics across machines with hundreds of parts from multiple manufacturers.",
@@ -64,13 +76,17 @@ const PROJECTS = {
     design: [
         {
             title: "3D Printed Headphones",
+            year: "2019",
+            note: "Walnut headband, resin cast, Alibaba drivers",
             image: "assets/projects/design/Headphones.png",
             description: "My original idea with this project was to make a small business selling custom designed premium headphones. There were a lot of fun challenges to overcome in making the prototype. The first was the design, I designed everything in Solidworks with the goal of minimizing parts, making them manufacturable, and aesthetically pleasing. To really differentiate them, I chose to make the headband out of bent walnut. This was in and of itself a huge challenge, as I had to learn how to steam wood and build the tooling to allow me to do that. A lot of trial and error, different woods, different thicknesses, but it eventually worked. But of course, unpadded wood isn't the most comfortable material to have on your head all day. So I experimented with padding options. I tried glueing cork to the wood, as well as different padding materials. But none both stayed put and were comfortable. I ended up implementing a solution of adding a leather strap that hung just below the wood. This was both comfortable and added to the premium materials feel of the product. My manufacturing plan was to first 3D print the parts, and then to cast them and create each new copy with a resin mold. This worked fairly well, but forced me to really think through the design. A huge challenge with resins is eliminating air-bubbles in them. So I did a lot of work to have no small features in the parts that would trap air, and then I experimented with vacuum techniques for the process itself. I was eventually able to get it working fairly well. For the speakers (drivers) I went on Alibaba and ordered a half dozen different kinds until I found the model that sounded the best. I sized the headphones accordingly. I also ordered premium headphone wires, and ear cushions to complete the look and feel. There were a lot of great design challenges to work through in creating these, and a lot of clever little solutions that were fun to think through. I ultimately didn't end up making a business out of it, as they were very time consuming to make and would not have scaled, but it was a fun project nonetheless.",
             details: "",
             tech: ["Solidworks","3D Printing","Resins","Headphone Drivers","Woodworking"],
         },
         {
-            title: "3D Modeling",
+            title: "3D Modeling Exhibits",
+            year: "—",
+            note: "Solidworks portfolio",
             image: "assets/projects/design/modeling.png",
             description: "This is just a demonstration of some of the parts I've modeled in Solidworks. Most of my engineering experience with modeling was focused on large assemblies, hydraulic components, sheetmetal, machined parts, harness assemblies, and cabling using ProEngineer/Creo.",
             details: "",
@@ -78,6 +94,8 @@ const PROJECTS = {
         },
         {
             title: "Guitar Stand",
+            year: "2020",
+            note: "Golf-bag mechanism, repurposed",
             image: "assets/projects/design/guitar.png",
             description: "I had a moment of inspiration while playing golf. I set my bag down and the stand just opened. I wondered why this mechanism had never been implemented for a guitar case, as that would also be very convenient to have a stand on the go. I bought a cheap golf bag and took the stand off of it. I riveted onto a guitar bag and then I designed and 3D printed stand for the guitar. This both had the pegs to support the guitar, but also the mechanism that the stand pedal of the golf stand needs to deploy the legs. I incorporated all of this into the guitar bag and it worked very well. When the bag is set down, the stand deploys, when picked up it folds up against the bag.",
             details: "",
@@ -85,6 +103,8 @@ const PROJECTS = {
         },
         {
             title: "Standing Desk",
+            year: "2018",
+            note: "Folds flat against the wall",
             image: "assets/projects/design/Desk.png",
             description: "This was an experiment with how I could build a more functional desk. Designed in Solidworks, the final version allowed the user to set any level, and when not in use, the desk folded flat against the wall.",
             details: "",
@@ -92,6 +112,8 @@ const PROJECTS = {
         },
         {
             title: "Tap Handles",
+            year: "2017",
+            note: "Hops / water / grain / yeast",
             image: "assets/projects/design/Handles.jpg",
             description: "I designed these for a friend that brewed his own beer. They represent the four main ingredients: hops, water, grain, and yeast. Walnut handle with a copper plate.",
             details: "",

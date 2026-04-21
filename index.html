@@ -4,43 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeff Sayre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <a href="index.html" class="active">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="photography.html">Photography</a>
-        <a href="travels.html">Travels</a>
-        <a href="blog.html">Blog</a>
-    </nav>
-    <main>
-        <div class="about-photo">
-            <img src="assets/headshot.jpeg" alt="Jeff Sayre">
+        <div class="nav-brand">
+            <a href="index.html" class="name">Jeff Sayre</a>
+            <span class="subtitle">Chicago · engineer & data scientist</span>
         </div>
-        <h1>About</h1>
-        <p>I'm Jeff Sayre — an engineer and data scientist with 15+ years of experience spanning mechanical design, electrical systems integration, and data analytics. I spent most of my career at Caterpillar, where I progressed from designing hydraulic systems for large mining equipment to leading telematics deployments and building data quality and analytics tools for customer fleets.</p>
-        <p>I hold 5 U.S. patents and have led teams across hydraulic, electrical, and software disciplines. More recently, I've focused on applied data science — building predictive models, data pipelines, and full-stack web applications. My side project, <a href="https://getsolarintel.com">Solar Intel</a>, is a lead-generation platform that predicts residential solar adoption using machine learning.</p>
+        <div class="nav-links">
+            <a href="index.html" class="active">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="photography.html">Photography</a>
+            <a href="travels.html">Travels</a>
+            <a href="blog.html">Blog</a>
+        </div>
+    </nav>
 
-        <h2>Skills</h2>
-        <ul>
-            <li>Python (pandas, NumPy, scikit-learn, matplotlib), SQL</li>
-            <li>PostgreSQL, Snowflake, Supabase</li>
-            <li>Tableau, Power BI</li>
-            <li>HTML/CSS/JS</li>
-            <li>Machine learning: classification, regression, clustering, ensemble methods, walk-forward validation</li>
-            <li>Creo/Pro-ENGINEER, SolidWorks, FEA, GD&T</li>
-            <li>Git, REST APIs, Agile/Scrum</li>
-        </ul>
+    <div class="about-hero">
+        <div>
+            <div class="about-photo-wrap">
+                <div class="about-photo-shadow"></div>
+                <img src="assets/headshot.jpeg" alt="Jeff Sayre">
+            </div>
+            <div class="about-contact">
+                Chicago, IL<br>open to relocation<br><a href="mailto:jpsayre@gmail.com">jpsayre@gmail.com</a>
+            </div>
+        </div>
+        <div>
+            <div class="section-label">§ About</div>
+            <h1 class="page-title">Building things<br>since 2007.</h1>
+            <div class="about-intro">
+                <p>I'm Jeff Sayre — an engineer and data scientist with 15+ years of experience spanning mechanical design, electrical systems integration, and data analytics. I spent most of my career at Caterpillar, where I progressed from designing hydraulic systems for large mining equipment to leading telematics deployments and building data quality and analytics tools for customer fleets.</p>
+                <p>I hold 5 U.S. patents and have led teams across hydraulic, electrical, and software disciplines. More recently, I've focused on applied data science — building predictive models, data pipelines, and full-stack web applications. My side project, <a href="https://getsolarintel.com">Solar Intel</a>, is a lead-generation platform that predicts residential solar adoption using machine learning.</p>
+            </div>
+        </div>
+    </div>
 
-        <h2>Education</h2>
-        <ul>
-            <li>M.S. Analytics — Georgia Institute of Technology</li>
-            <li>B.S. Mechanical Engineering, Minor in Mathematics — University of Iowa</li>
-        </ul>
+    <div class="section-row">
+        <div class="section-label">§ Skills</div>
+        <div class="section-content">
+            <ul class="skills-list">
+                <li>Python (pandas, NumPy, scikit-learn, matplotlib), SQL</li>
+                <li>PostgreSQL, Snowflake, Supabase</li>
+                <li>Tableau, Power BI</li>
+                <li>HTML/CSS/JS</li>
+                <li>Machine learning: classification, regression, clustering, ensemble methods, walk-forward validation</li>
+                <li>Creo/Pro-ENGINEER, SolidWorks, FEA, GD&T</li>
+                <li>Git, REST APIs, Agile/Scrum</li>
+            </ul>
+        </div>
+    </div>
 
-        <h2>Interests</h2>
-        <p>Outside of work, I spend my time traveling, taking photos, playing guitar, playing volleyball, and learning Spanish. You can check out my <a href="travels.html">travels</a> and <a href="photography.html">photography</a> on this site.</p>
-    </main>
+    <div class="section-row">
+        <div class="section-label">§ Education</div>
+        <div class="section-content">
+            <div class="edu-entry">
+                <span class="edu-degree">M.S. Analytics</span>
+                <span class="edu-school">Georgia Institute of Technology</span>
+                <span class="edu-year">2021</span>
+            </div>
+            <div class="edu-entry">
+                <span class="edu-degree">B.S. Mechanical Engineering · Math minor</span>
+                <span class="edu-school">University of Iowa</span>
+                <span class="edu-year">2007</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-row" style="padding-bottom: 44px;">
+        <div class="section-label">§ Interests</div>
+        <div class="section-content">
+            <div class="interest-text">
+                Outside of work, I spend my time traveling, taking photos, playing guitar, playing volleyball, and learning Spanish. You can check out my <a href="travels.html">travels</a> and <a href="photography.html">photography</a> on this site.
+            </div>
+            <div class="interest-pills">
+                <span>Traveling</span>
+                <span>Photography</span>
+                <span>Guitar</span>
+                <span>Volleyball</span>
+                <span>Spanish</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>© 2026 Jeff Sayre</span>
+        <div class="footer-links">
+            <span>jpsayre@gmail.com</span>
+            <a href="https://www.linkedin.com/in/jeff-sayre-b3ab8924/" target="_blank">linkedin.com/in/jeff-sayre</a>
+        </div>
+    </footer>
 </body>
 </html>

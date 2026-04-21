@@ -21,39 +21,39 @@ TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} - Jeff Sayre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        .post-date {{
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }}
-        .post-content img {{
-            max-width: 100%;
-            border-radius: 6px;
-            margin: 1rem 0;
-        }}
-        .back-link {{
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }}
-    </style>
 </head>
 <body>
     <nav>
-        <a href="../index.html">About</a>
-        <a href="../projects.html">Projects</a>
-        <a href="../photography.html">Photography</a>
-        <a href="../travels.html">Travels</a>
-        <a href="../blog.html" class="active">Blog</a>
+        <div class="nav-brand">
+            <a href="../index.html" class="name">Jeff Sayre</a>
+            <span class="subtitle">Chicago · engineer &amp; data scientist</span>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">About</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../photography.html">Photography</a>
+            <a href="../travels.html">Travels</a>
+            <a href="../blog.html" class="active">Blog</a>
+        </div>
     </nav>
-    <main>
-        <a href="../blog.html" class="back-link">&larr; All posts</a>
+    <div style="padding: 40px 40px 48px; max-width: 780px;">
+        <a href="../blog.html" class="post-back">&larr; All posts</a>
         <div class="post-date">{date}</div>
         <div class="post-content">
 {content}
         </div>
-    </main>
+    </div>
+    <footer>
+        <span>&copy; 2026 Jeff Sayre</span>
+        <div class="footer-links">
+            <span>jpsayre@gmail.com</span>
+            <a href="https://www.linkedin.com/in/jeff-sayre-b3ab8924/" target="_blank">linkedin.com/in/jeff-sayre</a>
+        </div>
+    </footer>
 </body>
 </html>"""
 

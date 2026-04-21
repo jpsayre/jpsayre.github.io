@@ -4,149 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Jeff Sayre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .sub-nav {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.75rem;
-        }
-        .sub-nav a {
-            text-decoration: none;
-            color: #888;
-            font-size: 0.95rem;
-            cursor: pointer;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -0.8rem;
-        }
-        .sub-nav a.active {
-            color: #000;
-            font-weight: 600;
-            border-bottom-color: #000;
-        }
-        .sub-nav a:hover {
-            color: #333;
-        }
-        .project-section {
-            display: none;
-        }
-        .project-section.active {
-            display: block;
-        }
-        .project {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-        .project:last-child {
-            border-bottom: none;
-        }
-        .project h2 {
-            margin-bottom: 0.25rem;
-        }
-        .project h3 {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-        .project ul {
-            padding-left: 1.5rem;
-        }
-        .project li {
-            margin-bottom: 0.25rem;
-        }
-        .project-image {
-            margin: 1rem 0;
-            border-radius: 6px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .project-image img {
-            width: 100%;
-            display: block;
-        }
-        .project-link {
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-        .empty-state {
-            color: #888;
-            font-style: italic;
-        }
-
-        /* Project lightbox */
-        .project-lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        .project-lightbox.active {
-            display: flex;
-        }
-        .project-lightbox img {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        .project-lightbox-close {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.5rem;
-            color: #fff;
-            font-size: 2rem;
-            cursor: pointer;
-            opacity: 0.7;
-            background: none;
-            border: none;
-        }
-        .project-lightbox-close:hover {
-            opacity: 1;
-        }
-    </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">About</a>
-        <a href="projects.html" class="active">Projects</a>
-        <a href="photography.html">Photography</a>
-        <a href="travels.html">Travels</a>
-        <a href="blog.html">Blog</a>
-    </nav>
-    <main>
-        <h1>Projects</h1>
-
-        <div class="sub-nav" id="sub-nav">
-            <a data-tab="data" class="active">Data</a>
-            <a data-tab="engineering">Engineering</a>
-            <a data-tab="design">Design</a>
+        <div class="nav-brand">
+            <a href="index.html" class="name">Jeff Sayre</a>
+            <span class="subtitle">Chicago · engineer & data scientist</span>
         </div>
+        <div class="nav-links">
+            <a href="index.html">About</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="photography.html">Photography</a>
+            <a href="travels.html">Travels</a>
+            <a href="blog.html">Blog</a>
+        </div>
+    </nav>
 
-        <div class="project-section active" id="tab-data"></div>
-        <div class="project-section" id="tab-engineering"></div>
-        <div class="project-section" id="tab-design"></div>
-    </main>
-
-    <div class="project-lightbox" id="project-lightbox">
-        <button class="project-lightbox-close" id="project-lightbox-close">&times;</button>
-        <img id="project-lightbox-img" src="" alt="">
+    <div class="title-block">
+        <div class="section-label">§ Projects</div>
+        <h1 class="page-title">Selected works.</h1>
     </div>
+
+    <div class="sub-nav" id="sub-nav">
+        <a data-tab="data" class="active">Data <span class="count"></span></a>
+        <a data-tab="engineering">Engineering <span class="count"></span></a>
+        <a data-tab="design">Design <span class="count"></span></a>
+    </div>
+
+    <div class="project-section active" id="tab-data"></div>
+    <div class="project-section" id="tab-engineering"></div>
+    <div class="project-section" id="tab-design"></div>
+
+    <footer>
+        <span>© 2026 Jeff Sayre</span>
+        <div class="footer-links">
+            <span>jpsayre@gmail.com</span>
+            <a href="https://www.linkedin.com/in/jeff-sayre-b3ab8924/" target="_blank">linkedin.com/in/jeff-sayre</a>
+        </div>
+    </footer>
 
     <script src="projects-data.js"></script>
     <script>
-        var lightbox = document.getElementById("project-lightbox");
-        var lightboxImg = document.getElementById("project-lightbox-img");
-
         function renderProjects(category, containerId) {
             var container = document.getElementById(containerId);
             var projects = PROJECTS[category];
@@ -156,57 +58,59 @@
                 return;
             }
 
-            projects.forEach(function(p) {
-                var section = document.createElement("section");
-                section.className = "project";
+            projects.forEach(function(p, i) {
+                var row = document.createElement("div");
+                row.className = "ledger-row";
 
-                var html = '<h2>' + p.title + '</h2>';
+                var num = String(i + 1).padStart(2, "0");
+                var year = p.year || "";
+                var note = p.note || "";
 
-                if (p.url) {
-                    html += '<p class="project-link"><a href="' + p.url + '">' + p.url.replace('https://', '') + '</a></p>';
+                // Build note from description if not set
+                if (!note && p.description) {
+                    note = p.description.substring(0, 80);
+                    if (p.description.length > 80) note += "...";
                 }
 
-                if (p.image) {
-                    html += '<div class="project-image"><img src="' + p.image + '" alt="' + p.title + '" loading="lazy"></div>';
-                }
-
+                var detailsHtml = "";
                 if (p.description) {
-                    html += '<p>' + p.description + '</p>';
+                    detailsHtml += '<p>' + p.description + '</p>';
                 }
-
                 if (p.details) {
-                    html += '<p>' + p.details + '</p>';
+                    detailsHtml += '<p>' + p.details + '</p>';
                 }
-
                 if (p.patents && p.patents.length > 0) {
-                    html += '<h3>Patents</h3><ul>';
+                    detailsHtml += '<h4>Patents</h4><ul>';
                     p.patents.forEach(function(pat) {
-                        html += '<li><a href="' + pat.url + '" target="_blank">' + pat.number + '</a> — ' + pat.title + '</li>';
+                        detailsHtml += '<li><a href="' + pat.url + '" target="_blank">' + pat.number + '</a> — ' + pat.title + '</li>';
                     });
-                    html += '</ul>';
+                    detailsHtml += '</ul>';
                 }
-
                 if (p.tech && p.tech.length > 0) {
-                    html += '<h3>Tech Stack</h3><ul>';
+                    detailsHtml += '<h4>Tech</h4><ul>';
                     p.tech.forEach(function(t) {
-                        html += '<li>' + t + '</li>';
+                        detailsHtml += '<li>' + t + '</li>';
                     });
-                    html += '</ul>';
+                    detailsHtml += '</ul>';
                 }
 
-                section.innerHTML = html;
+                row.innerHTML =
+                    '<span class="ledger-num">№ ' + num + '</span>' +
+                    '<div>' +
+                        '<div class="ledger-title">' + p.title + '</div>' +
+                        '<div class="ledger-note">' + note + '</div>' +
+                        (p.url ? '<div class="ledger-note"><a href="' + p.url + '" target="_blank">' + p.url.replace('https://', '') + '</a></div>' : '') +
+                        '<div class="ledger-details" id="detail-' + category + '-' + i + '">' + detailsHtml + '</div>' +
+                    '</div>' +
+                    '<span class="ledger-year">' + year + '</span>';
 
-                // Click image to expand
-                var img = section.querySelector(".project-image");
-                if (img) {
-                    img.addEventListener("click", function() {
-                        lightboxImg.src = p.image;
-                        lightbox.classList.add("active");
-                        document.body.style.overflow = "hidden";
-                    });
-                }
+                row.addEventListener("click", function(e) {
+                    if (e.target.tagName === "A") return;
+                    var detail = document.getElementById("detail-" + category + "-" + i);
+                    detail.classList.toggle("open");
+                });
 
-                container.appendChild(section);
+                container.appendChild(row);
             });
         }
 
@@ -214,8 +118,15 @@
         renderProjects("engineering", "tab-engineering");
         renderProjects("design", "tab-design");
 
-        // Tab switching
+        // Set counts
         var tabs = document.querySelectorAll("#sub-nav a");
+        tabs.forEach(function(tab) {
+            var key = tab.dataset.tab;
+            var count = (PROJECTS[key] || []).length;
+            tab.querySelector(".count").textContent = String(count).padStart(2, "0");
+        });
+
+        // Tab switching
         tabs.forEach(function(tab) {
             tab.addEventListener("click", function() {
                 tabs.forEach(function(t) { t.classList.remove("active"); });
@@ -223,24 +134,6 @@
                 tab.classList.add("active");
                 document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
             });
-        });
-
-        // Lightbox close
-        document.getElementById("project-lightbox-close").addEventListener("click", function() {
-            lightbox.classList.remove("active");
-            document.body.style.overflow = "";
-        });
-        lightbox.addEventListener("click", function(e) {
-            if (e.target === lightbox) {
-                lightbox.classList.remove("active");
-                document.body.style.overflow = "";
-            }
-        });
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape" && lightbox.classList.contains("active")) {
-                lightbox.classList.remove("active");
-                document.body.style.overflow = "";
-            }
         });
     </script>
 </body>

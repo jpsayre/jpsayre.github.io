@@ -4,46 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travels - Jeff Sayre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        #globe-container {
-            width: 100%;
-            height: 70vh;
-            min-height: 400px;
-            position: relative;
-            cursor: grab;
-        }
-        #globe-container:active {
-            cursor: grabbing;
-        }
-    </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="photography.html">Photography</a>
-        <a href="travels.html" class="active">Travels</a>
-        <a href="blog.html">Blog</a>
+        <div class="nav-brand">
+            <a href="index.html" class="name">Jeff Sayre</a>
+            <span class="subtitle">Chicago · engineer & data scientist</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="photography.html">Photography</a>
+            <a href="travels.html" class="active">Travels</a>
+            <a href="blog.html">Blog</a>
+        </div>
     </nav>
-    <main>
-        <h1>Travels</h1>
-        <div id="globe-container"></div>
-    </main>
+
+    <div class="title-block">
+        <div class="section-label">§ Travels</div>
+        <h1 class="page-title">Places I've been.</h1>
+    </div>
+
+    <div class="globe-wrap">
+        <div id="globe-container">
+            <div class="globe-caption">drag to rotate · click a pin for details</div>
+        </div>
+    </div>
+
+    <footer>
+        <span>© 2026 Jeff Sayre</span>
+        <div class="footer-links">
+            <span>jpsayre@gmail.com</span>
+            <a href="https://www.linkedin.com/in/jeff-sayre-b3ab8924/" target="_blank">linkedin.com/in/jeff-sayre</a>
+        </div>
+    </footer>
 
     <script src="locations.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script>
-        // Build the globe — same pattern as the original working version
-        const container = document.getElementById("globe-container");
-        const globe = Globe()
+        var container = document.getElementById("globe-container");
+        var globe = Globe()
             .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
             .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
-            .backgroundImageUrl("https://unpkg.com/three-globe/example/img/night-sky.png")
+            .backgroundColor("#1c1a14")
             .pointsData(LOCATIONS)
             .pointLat("lat")
             .pointLng("lng")
-            .pointColor(() => "#ff4444")
+            .pointColor(function() { return "#e8a866"; })
             .pointRadius(0.7)
             .pointAltitude(0)
             .pointLabel("name")
@@ -51,15 +62,12 @@
             .height(container.clientHeight)
             (container);
 
-        // Center on Chicago
         globe.pointOfView({ lat: 30, lng: -87.6, altitude: 2.5 });
 
-        // Resize handling
-        window.addEventListener("resize", () => {
+        window.addEventListener("resize", function() {
             globe.width(container.clientWidth);
             globe.height(container.clientHeight);
         });
-
     </script>
 </body>
 </html>

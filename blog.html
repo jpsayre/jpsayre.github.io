@@ -4,52 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Jeff Sayre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .blog-post {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .blog-post:last-child {
-            border-bottom: none;
-        }
-        .blog-post h2 {
-            margin-bottom: 0.25rem;
-        }
-        .blog-post h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .blog-post h2 a:hover {
-            color: #000;
-        }
-        .blog-date {
-            color: #888;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        .blog-summary {
-            color: #555;
-        }
-        .empty-state {
-            color: #888;
-            font-style: italic;
-        }
-    </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="photography.html">Photography</a>
-        <a href="travels.html">Travels</a>
-        <a href="blog.html" class="active">Blog</a>
+        <div class="nav-brand">
+            <a href="index.html" class="name">Jeff Sayre</a>
+            <span class="subtitle">Chicago · engineer & data scientist</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="photography.html">Photography</a>
+            <a href="travels.html">Travels</a>
+            <a href="blog.html" class="active">Blog</a>
+        </div>
     </nav>
-    <main>
-        <h1>Blog</h1>
-        <div id="blog-list"></div>
-    </main>
+
+    <div class="title-block">
+        <div class="section-label">§ Blog</div>
+        <h1 class="page-title">Writing, occasionally.</h1>
+    </div>
+
+    <div style="padding: 16px 40px 40px;" id="blog-list"></div>
+
+    <footer>
+        <span>© 2026 Jeff Sayre</span>
+        <div class="footer-links">
+            <span>jpsayre@gmail.com</span>
+            <a href="https://www.linkedin.com/in/jeff-sayre-b3ab8924/" target="_blank">linkedin.com/in/jeff-sayre</a>
+        </div>
+    </footer>
 
     <script src="blog-data.js"></script>
     <script>
@@ -59,12 +47,19 @@
             list.innerHTML = '<p class="empty-state">Posts coming soon.</p>';
         } else {
             BLOG_POSTS.forEach(function(post) {
+                var parts = post.date.split("-");
+                var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                var dateStr = months[parseInt(parts[1]) - 1] + " " + parseInt(parts[2]) + ", " + parts[0];
+
                 var div = document.createElement("div");
                 div.className = "blog-post";
                 div.innerHTML =
-                    '<h2><a href="' + post.url + '">' + post.title + '</a></h2>' +
-                    '<div class="blog-date">' + post.date + '</div>' +
-                    '<p class="blog-summary">' + post.summary + '</p>';
+                    '<div class="blog-date">' + dateStr + '</div>' +
+                    '<div>' +
+                        '<a href="' + post.url + '" class="blog-title">' + post.title + '</a>' +
+                        '<p class="blog-summary">' + post.summary + '</p>' +
+                        '<a href="' + post.url + '" class="blog-read-more">Read the post →</a>' +
+                    '</div>';
                 list.appendChild(div);
             });
         }
