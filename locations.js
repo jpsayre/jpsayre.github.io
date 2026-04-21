@@ -51,5 +51,5 @@ const LOCATIONS = [
     { name: "Joshua Tree National Park", lat: 33.8734, lng: -115.9010 },
     { name: "Rocky Mountain National Park", lat: 40.3428, lng: -105.6836 },
     { name: "Grand Canyon National Park", lat: 36.1069, lng: -112.1129 },
+    { name: "Cozumel, Mexico", lat: 20.4318, lng: -86.9203 },
 ];
-
