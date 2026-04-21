@@ -12,25 +12,25 @@ const PROJECTS = {
     engineering: [],
     design: [
         {
-            title: "Headphones",
+            title: "3D Printed Headphones",
             image: "assets/projects/design/Headphones.png",
-            description: "",
+            description: "My original idea with this project was to make a small business selling custom designed premium headphones. There were a lot of fun challenges to overcome in making the prototype. The first was the design, I designed everything in Solidworks with the goal of minimizing parts, making them manufacturable, and aesthetically pleasing. To really differentiate them, I chose to make the headband out of bent walnut. This was in and of itself a huge challenge, as I had to learn how to steam wood and build the tooling to allow me to do that. A lot of trial and error, different woods, different thicknesses, but it eventually worked. But of course, unpadded wood isn't the most comfortable material to have on your head all day. So I experimented with padding options. I tried glueing cork to the wood, as well as different padding materials. But none both stayed put and were comfortable. I ended up implementing a solution of adding a leather strap that hung just below the wood. This was both comfortable and added to the premium materials feel of the product. My manufacturing plan was to first 3D print the parts, and then to cast them and create each new copy with a resin mold. This worked fairly well, but forced me to really think through the design. A huge challenge with resins is eliminating air-bubbles in them. So I did a lot of work to have no small features in the parts that would trap air, and then I experimented with vacuum techniques for the process itself. I was eventually able to get it working fairly well. For the speakers (drivers) I went on Alibaba and ordered a half dozen different kinds until I found the model that sounded the best. I sized the headphones accordingly. I also ordered premium headphone wires, and ear cushions to complete the look and feel. There were a lot of great design challenges to work through in creating these, and a lot of clever little solutions that were fun to think through. I ultimately didn't end up making a business out of it, as they were very time consuming to make and would not have scaled, but it was a fun project nonetheless.",
             details: "",
-            tech: [],
+            tech: ["Solidworks","3D Printing","Resins","Headphone Drivers","Woodworking"],
         },
         {
             title: "3D Modeling",
             image: "assets/projects/design/modeling.png",
-            description: "",
+            description: "This is just a demonstration of some of the parts I've modeled in Solidworks. Most of my engineering experience with modeling was focused on large assemblies, hydraulic components, sheetmetal, machined parts, harness assemblies, and cabling using ProEngineer/Creo.",
             details: "",
-            tech: [],
+            tech: ["Solidworks"],
         },
         {
             title: "Guitar",
             image: "assets/projects/design/guitar.png",
-            description: "",
+            description: "I had a moment of inspiration while playing golf. I set my bag down and the stand just opened. I wondered why this mechanism had never been implemented for a guitar case, as that would also be very convenient to have a stand on the go. I bought a cheap golf bag and took the stand off of it. I riveted onto a guitar bag and then I designed and 3D printed stand for the guitar. This both had the pegs to support the guitar, but also the mechanism that the stand pedal of the golf stand needs to deploy the legs. I incorporated all of this into the guitar bag and it worked very well. When the bag is set down, the stand deploys, when picked up it folds up against the bag.",
             details: "",
-            tech: [],
+            tech: ["3D Printing"],
         },
     ],
 };
