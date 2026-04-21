@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Jeff Sayre</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-post {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        .blog-post h2 {
+            margin-bottom: 0.25rem;
+        }
+        .blog-post h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .blog-post h2 a:hover {
+            color: #000;
+        }
+        .blog-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .blog-summary {
+            color: #555;
+        }
+        .empty-state {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -16,7 +48,26 @@
     </nav>
     <main>
         <h1>Blog</h1>
-        <p>Blog posts will go here.</p>
+        <div id="blog-list"></div>
     </main>
+
+    <script src="blog-data.js"></script>
+    <script>
+        var list = document.getElementById("blog-list");
+
+        if (!BLOG_POSTS || BLOG_POSTS.length === 0) {
+            list.innerHTML = '<p class="empty-state">Posts coming soon.</p>';
+        } else {
+            BLOG_POSTS.forEach(function(post) {
+                var div = document.createElement("div");
+                div.className = "blog-post";
+                div.innerHTML =
+                    '<h2><a href="' + post.url + '">' + post.title + '</a></h2>' +
+                    '<div class="blog-date">' + post.date + '</div>' +
+                    '<p class="blog-summary">' + post.summary + '</p>';
+                list.appendChild(div);
+            });
+        }
+    </script>
 </body>
 </html>
