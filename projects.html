@@ -16,7 +16,21 @@
     </nav>
     <main>
         <h1>Projects</h1>
-        <p>Project highlights will go here.</p>
+
+        <section class="project">
+            <h2>Solar Intel</h2>
+            <p><a href="https://getsolarintel.com">getsolarintel.com</a></p>
+            <p>A lead-generation platform that ranks residential properties by their likelihood of installing solar in the next 12 months. The system ingests parcel data, municipal permit records, Google Sunroof roof geometry, Census demographics, and economic indicators to produce ranked lists of high-probability homes for solar installers.</p>
+            <p>The core pipeline runs 11 stages — from data ingestion and permit classification through walk-forward machine learning validation using an ensemble of models (LASSO, Random Forest, Gradient Boosting, LightGBM, Neural Net, and a Stacked Ensemble). Currently live for Boulder County, CO with San Diego, CA in progress.</p>
+            <p>The customer-facing app is built with Next.js 14 and Supabase, featuring an interactive map explorer, home detail views, and a follow/alerts system for tracking properties.</p>
+            <h3>Tech Stack</h3>
+            <ul>
+                <li>Python — data pipeline, ML modeling, permit classification</li>
+                <li>Next.js 14 + Supabase — web app and backend</li>
+                <li>Google Sunroof API, Census ACS, Regrid — data sources</li>
+                <li>scikit-learn, LightGBM — walk-forward modeling and ensemble</li>
+            </ul>
+        </section>
     </main>
 </body>
 </html>

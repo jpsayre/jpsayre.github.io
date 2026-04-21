@@ -52,4 +52,11 @@ const LOCATIONS = [
     { name: "Rocky Mountain National Park", lat: 40.3428, lng: -105.6836 },
     { name: "Grand Canyon National Park", lat: 36.1069, lng: -112.1129 },
     { name: "Cozumel, Mexico", lat: 20.4318, lng: -86.9203 },
+    { name: "Deadwood, SD, USA", lat: 44.3767, lng: -103.7296 },
+    { name: "Milwaukee, WI, USA", lat: 43.0389, lng: -87.9065 },
+    { name: "Fort Myers, FL, USA", lat: 26.6406, lng: -81.8723 },
+    { name: "Key West, FL, USA", lat: 24.5551, lng: -81.7800 },
+    { name: "Detroit, MI, USA", lat: 42.3314, lng: -83.0458 },
+    { name: "Iowa City, IA, USA", lat: 41.6611, lng: -91.5302 },
+    { name: "Peoria, IL, USA", lat: 40.6936, lng: -89.5890 },
 ];

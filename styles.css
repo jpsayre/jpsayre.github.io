@@ -42,3 +42,27 @@ h1 {
 p {
     margin-bottom: 1rem;
 }
+
+.project {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.project h2 {
+    margin-bottom: 0.25rem;
+}
+
+.project h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.project ul {
+    padding-left: 1.5rem;
+}
+
+.project li {
+    margin-bottom: 0.25rem;
+}
