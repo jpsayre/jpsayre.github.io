@@ -51,6 +51,9 @@
             .height(container.clientHeight)
             (container);
 
+        // Center on Chicago
+        globe.pointOfView({ lat: 30, lng: -87.6, altitude: 2.5 });
+
         // Resize handling
         window.addEventListener("resize", () => {
             globe.width(container.clientWidth);
