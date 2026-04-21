@@ -9,4 +9,12 @@ const PHOTOS = [
     { file: "assets/photography/11728779_10103147077548309_8249503361613831257_o_Original.jpg", title: "", location: "", description: "" },
     { file: "assets/photography/885590_10103147076969469_1424372816114511424_o_Original.jpg", title: "", location: "", description: "" },
     { file: "assets/photography/sf.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/5.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/3.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_0939.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_1329.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_2313.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_2625.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_9931.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_9945.jpg", title: "", location: "", description: "" },
 ];
