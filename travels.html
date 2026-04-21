@@ -52,43 +52,39 @@
         </div>
     </main>
 
+    <script src="locations.js"></script>
     <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
     <script>
+        // Build the globe — same pattern as the original working version
         const container = document.getElementById("globe-container");
+        const globe = Globe()
+            .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
+            .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+            .backgroundImageUrl("https://unpkg.com/three-globe/example/img/night-sky.png")
+            .pointsData(LOCATIONS)
+            .pointLat("lat")
+            .pointLng("lng")
+            .pointColor(() => "#ff4444")
+            .pointRadius(0.5)
+            .pointAltitude(0.01)
+            .pointLabel("name")
+            .width(container.clientWidth)
+            .height(container.clientHeight)
+            (container);
 
-        // Load locations then build globe
-        fetch("locations.json")
-            .then(res => res.json())
-            .then(locations => {
-                const globe = Globe()
-                    .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
-                    .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
-                    .backgroundImageUrl("https://unpkg.com/three-globe/example/img/night-sky.png")
-                    .pointsData(locations)
-                    .pointLat("lat")
-                    .pointLng("lng")
-                    .pointColor(() => "#ff4444")
-                    .pointRadius(0.5)
-                    .pointAltitude(0.01)
-                    .pointLabel("name")
-                    .width(container.clientWidth)
-                    .height(container.clientHeight)
-                    (container);
+        // Resize handling
+        window.addEventListener("resize", () => {
+            globe.width(container.clientWidth);
+            globe.height(container.clientHeight);
+        });
 
-                // Resize handling
-                window.addEventListener("resize", () => {
-                    globe.width(container.clientWidth);
-                    globe.height(container.clientHeight);
-                });
-
-                // Populate the text list
-                const listEl = document.getElementById("location-list");
-                locations.forEach(loc => {
-                    const li = document.createElement("li");
-                    li.textContent = loc.name;
-                    listEl.appendChild(li);
-                });
-            });
+        // Populate the text list
+        const listEl = document.getElementById("location-list");
+        LOCATIONS.forEach(loc => {
+            const li = document.createElement("li");
+            li.textContent = loc.name;
+            listEl.appendChild(li);
+        });
     </script>
 </body>
 </html>
