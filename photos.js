@@ -1,4 +1,4 @@
 const PHOTOS = [
-    // Add photos here. Example:
-    // { file: "assets/photography/bali-sunset.jpg", title: "Sunset in Bali", location: "Bali, Indonesia" },
+    // Add photos here:
+    // { file: "assets/photography/filename.jpg", title: "Title", location: "City, Country", description: "Optional details about the photo" },
 ];
