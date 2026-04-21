@@ -16,24 +16,6 @@
         #globe-container:active {
             cursor: grabbing;
         }
-        .location-list {
-            margin-top: 2rem;
-        }
-        .location-list h2 {
-            margin-bottom: 0.5rem;
-        }
-        .location-list ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.5rem;
-        }
-        .location-list li {
-            color: #555;
-        }
-        .location-list li::before {
-            content: "\1F4CD ";
-        }
     </style>
 </head>
 <body>
@@ -46,10 +28,6 @@
     <main>
         <h1>Travels</h1>
         <div id="globe-container"></div>
-        <div class="location-list">
-            <h2>Places I've been</h2>
-            <ul id="location-list"></ul>
-        </div>
     </main>
 
     <script src="locations.js"></script>
@@ -78,13 +56,6 @@
             globe.height(container.clientHeight);
         });
 
-        // Populate the text list
-        const listEl = document.getElementById("location-list");
-        LOCATIONS.forEach(loc => {
-            const li = document.createElement("li");
-            li.textContent = loc.name;
-            listEl.appendChild(li);
-        });
     </script>
 </body>
 </html>
