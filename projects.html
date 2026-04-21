@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Jeff Sayre</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .sub-nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.75rem;
+        }
+        .sub-nav a {
+            text-decoration: none;
+            color: #888;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -0.8rem;
+        }
+        .sub-nav a.active {
+            color: #000;
+            font-weight: 600;
+            border-bottom-color: #000;
+        }
+        .sub-nav a:hover {
+            color: #333;
+        }
+        .project-section {
+            display: none;
+        }
+        .project-section.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -17,20 +49,48 @@
     <main>
         <h1>Projects</h1>
 
-        <section class="project">
-            <h2>Solar Intel</h2>
-            <p><a href="https://getsolarintel.com">getsolarintel.com</a></p>
-            <p>A lead-generation platform that ranks residential properties by their likelihood of installing solar in the next 12 months. The system ingests parcel data, municipal permit records, Google Sunroof roof geometry, Census demographics, and economic indicators to produce ranked lists of high-probability homes for solar installers.</p>
-            <p>The core pipeline runs 11 stages — from data ingestion and permit classification through walk-forward machine learning validation using an ensemble of models (LASSO, Random Forest, Gradient Boosting, LightGBM, Neural Net, and a Stacked Ensemble). Currently live for Boulder County, CO with San Diego, CA in progress.</p>
-            <p>The customer-facing app is built with Next.js 14 and Supabase, featuring an interactive map explorer, home detail views, and a follow/alerts system for tracking properties.</p>
-            <h3>Tech Stack</h3>
-            <ul>
-                <li>Python — data pipeline, ML modeling, permit classification</li>
-                <li>Next.js 14 + Supabase — web app and backend</li>
-                <li>Google Sunroof API, Census ACS, Regrid — data sources</li>
-                <li>scikit-learn, LightGBM — walk-forward modeling and ensemble</li>
-            </ul>
-        </section>
+        <div class="sub-nav" id="sub-nav">
+            <a data-tab="data" class="active">Data</a>
+            <a data-tab="engineering">Engineering</a>
+            <a data-tab="design">Design</a>
+        </div>
+
+        <div class="project-section active" id="tab-data">
+            <section class="project">
+                <h2>Solar Intel</h2>
+                <p><a href="https://getsolarintel.com">getsolarintel.com</a></p>
+                <p>A lead-generation platform that ranks residential properties by their likelihood of installing solar in the next 12 months. The system ingests parcel data, municipal permit records, Google Sunroof roof geometry, Census demographics, and economic indicators to produce ranked lists of high-probability homes for solar installers.</p>
+                <p>The core pipeline runs 11 stages — from data ingestion and permit classification through walk-forward machine learning validation using an ensemble of models (LASSO, Random Forest, Gradient Boosting, LightGBM, Neural Net, and a Stacked Ensemble). Currently live for Boulder County, CO with San Diego, CA in progress.</p>
+                <p>The customer-facing app is built with Next.js 14 and Supabase, featuring an interactive map explorer, home detail views, and a follow/alerts system for tracking properties.</p>
+                <h3>Tech Stack</h3>
+                <ul>
+                    <li>Python — data pipeline, ML modeling, permit classification</li>
+                    <li>Next.js 14 + Supabase — web app and backend</li>
+                    <li>Google Sunroof API, Census ACS, Regrid — data sources</li>
+                    <li>scikit-learn, LightGBM — walk-forward modeling and ensemble</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="project-section" id="tab-engineering">
+            <p class="empty-state">Engineering projects coming soon.</p>
+        </div>
+
+        <div class="project-section" id="tab-design">
+            <p class="empty-state">Design projects coming soon.</p>
+        </div>
     </main>
+
+    <script>
+        var tabs = document.querySelectorAll("#sub-nav a");
+        tabs.forEach(function(tab) {
+            tab.addEventListener("click", function() {
+                tabs.forEach(function(t) { t.classList.remove("active"); });
+                document.querySelectorAll(".project-section").forEach(function(s) { s.classList.remove("active"); });
+                tab.classList.add("active");
+                document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+            });
+        });
+    </script>
 </body>
 </html>
