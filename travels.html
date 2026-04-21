@@ -16,6 +16,14 @@
         #globe-container:active {
             cursor: grabbing;
         }
+        .pin {
+            width: 12px;
+            height: 12px;
+            background: #ff4444;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(0,0,0,0.4);
+        }
         .location-list {
             margin-top: 2rem;
         }
@@ -52,41 +60,44 @@
         </div>
     </main>
 
-    <script src="https://unpkg.com/globe.gl@2.35.1/dist/globe.gl.min.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
     <script>
-        const container = document.getElementById("globe-container");
+        window.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById("globe-container");
 
-        const globe = Globe()(container)
-            .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
-            .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
-            .backgroundImageUrl("https://unpkg.com/three-globe/example/img/night-sky.png")
-            .pointLat("lat")
-            .pointLng("lng")
-            .pointLabel("name")
-            .pointColor(() => "#ff4444")
-            .pointAltitude(0.06)
-            .pointRadius(0.6)
-            .width(container.clientWidth)
-            .height(container.clientHeight);
+            const globe = Globe()(container)
+                .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
+                .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+                .backgroundImageUrl("https://unpkg.com/three-globe/example/img/night-sky.png")
+                .htmlLat("lat")
+                .htmlLng("lng")
+                .htmlAltitude(0.01)
+                .htmlElement(function(d) {
+                    var pin = document.createElement("div");
+                    pin.className = "pin";
+                    pin.title = d.name;
+                    return pin;
+                })
+                .width(container.clientWidth)
+                .height(container.clientHeight);
 
-        // Load locations from locations.json
-        fetch("locations.json")
-            .then(res => res.json())
-            .then(locations => {
-                globe.pointsData(locations);
+            fetch("locations.json")
+                .then(function(res) { return res.json(); })
+                .then(function(locations) {
+                    globe.htmlElementsData(locations);
 
-                const listEl = document.getElementById("location-list");
-                locations.forEach(loc => {
-                    const li = document.createElement("li");
-                    li.textContent = loc.name;
-                    listEl.appendChild(li);
+                    var listEl = document.getElementById("location-list");
+                    locations.forEach(function(loc) {
+                        var li = document.createElement("li");
+                        li.textContent = loc.name;
+                        listEl.appendChild(li);
+                    });
                 });
-            });
 
-        // Resize handling
-        window.addEventListener("resize", () => {
-            globe.width(container.clientWidth);
-            globe.height(container.clientHeight);
+            window.addEventListener("resize", function() {
+                globe.width(container.clientWidth);
+                globe.height(container.clientHeight);
+            });
         });
     </script>
 </body>
