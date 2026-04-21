@@ -36,6 +36,83 @@
         .project-section.active {
             display: block;
         }
+        .project {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        .project:last-child {
+            border-bottom: none;
+        }
+        .project h2 {
+            margin-bottom: 0.25rem;
+        }
+        .project h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .project ul {
+            padding-left: 1.5rem;
+        }
+        .project li {
+            margin-bottom: 0.25rem;
+        }
+        .project-image {
+            margin: 1rem 0;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .project-image img {
+            width: 100%;
+            display: block;
+        }
+        .project-link {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+        .empty-state {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Project lightbox */
+        .project-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .project-lightbox.active {
+            display: flex;
+        }
+        .project-lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .project-lightbox-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            opacity: 0.7;
+            background: none;
+            border: none;
+        }
+        .project-lightbox-close:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -55,33 +132,81 @@
             <a data-tab="design">Design</a>
         </div>
 
-        <div class="project-section active" id="tab-data">
-            <section class="project">
-                <h2>Solar Intel</h2>
-                <p><a href="https://getsolarintel.com">getsolarintel.com</a></p>
-                <p>A lead-generation platform that ranks residential properties by their likelihood of installing solar in the next 12 months. The system ingests parcel data, municipal permit records, Google Sunroof roof geometry, Census demographics, and economic indicators to produce ranked lists of high-probability homes for solar installers.</p>
-                <p>The core pipeline runs 11 stages — from data ingestion and permit classification through walk-forward machine learning validation using an ensemble of models (LASSO, Random Forest, Gradient Boosting, LightGBM, Neural Net, and a Stacked Ensemble). Currently live for Boulder County, CO with San Diego, CA in progress.</p>
-                <p>The customer-facing app is built with Next.js 14 and Supabase, featuring an interactive map explorer, home detail views, and a follow/alerts system for tracking properties.</p>
-                <h3>Tech Stack</h3>
-                <ul>
-                    <li>Python — data pipeline, ML modeling, permit classification</li>
-                    <li>Next.js 14 + Supabase — web app and backend</li>
-                    <li>Google Sunroof API, Census ACS, Regrid — data sources</li>
-                    <li>scikit-learn, LightGBM — walk-forward modeling and ensemble</li>
-                </ul>
-            </section>
-        </div>
-
-        <div class="project-section" id="tab-engineering">
-            <p class="empty-state">Engineering projects coming soon.</p>
-        </div>
-
-        <div class="project-section" id="tab-design">
-            <p class="empty-state">Design projects coming soon.</p>
-        </div>
+        <div class="project-section active" id="tab-data"></div>
+        <div class="project-section" id="tab-engineering"></div>
+        <div class="project-section" id="tab-design"></div>
     </main>
 
+    <div class="project-lightbox" id="project-lightbox">
+        <button class="project-lightbox-close" id="project-lightbox-close">&times;</button>
+        <img id="project-lightbox-img" src="" alt="">
+    </div>
+
+    <script src="projects-data.js"></script>
     <script>
+        var lightbox = document.getElementById("project-lightbox");
+        var lightboxImg = document.getElementById("project-lightbox-img");
+
+        function renderProjects(category, containerId) {
+            var container = document.getElementById(containerId);
+            var projects = PROJECTS[category];
+
+            if (!projects || projects.length === 0) {
+                container.innerHTML = '<p class="empty-state">Projects coming soon.</p>';
+                return;
+            }
+
+            projects.forEach(function(p) {
+                var section = document.createElement("section");
+                section.className = "project";
+
+                var html = '<h2>' + p.title + '</h2>';
+
+                if (p.url) {
+                    html += '<p class="project-link"><a href="' + p.url + '">' + p.url.replace('https://', '') + '</a></p>';
+                }
+
+                if (p.image) {
+                    html += '<div class="project-image"><img src="' + p.image + '" alt="' + p.title + '" loading="lazy"></div>';
+                }
+
+                if (p.description) {
+                    html += '<p>' + p.description + '</p>';
+                }
+
+                if (p.details) {
+                    html += '<p>' + p.details + '</p>';
+                }
+
+                if (p.tech && p.tech.length > 0) {
+                    html += '<h3>Tech Stack</h3><ul>';
+                    p.tech.forEach(function(t) {
+                        html += '<li>' + t + '</li>';
+                    });
+                    html += '</ul>';
+                }
+
+                section.innerHTML = html;
+
+                // Click image to expand
+                var img = section.querySelector(".project-image");
+                if (img) {
+                    img.addEventListener("click", function() {
+                        lightboxImg.src = p.image;
+                        lightbox.classList.add("active");
+                        document.body.style.overflow = "hidden";
+                    });
+                }
+
+                container.appendChild(section);
+            });
+        }
+
+        renderProjects("data", "tab-data");
+        renderProjects("engineering", "tab-engineering");
+        renderProjects("design", "tab-design");
+
+        // Tab switching
         var tabs = document.querySelectorAll("#sub-nav a");
         tabs.forEach(function(tab) {
             tab.addEventListener("click", function() {
@@ -90,6 +215,24 @@
                 tab.classList.add("active");
                 document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
             });
+        });
+
+        // Lightbox close
+        document.getElementById("project-lightbox-close").addEventListener("click", function() {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+        lightbox.addEventListener("click", function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        });
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && lightbox.classList.contains("active")) {
+                lightbox.classList.remove("active");
+                document.body.style.overflow = "";
+            }
         });
     </script>
 </body>
