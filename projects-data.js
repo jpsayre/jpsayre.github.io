@@ -72,6 +72,15 @@ const PROJECTS = {
                 { number: "US 11,308,245", title: "Systems and methods for facilitating evaluation of characteristics related to quality", url: "https://patents.google.com/patent/US20200218784A1" },
             ],
         },
+        {
+            title: "Print Check Tool",
+            note: "Engineering drawing verification tool",
+            image: "",
+            url: "",
+            description: "Built a tool that automates the verification of engineering drawings. Uses optical character recognition (OCR) to locate BOM balloons on drawings, counts them, and cross-references against the parts table to identify mismatches — a process that was previously done manually and prone to human error.",
+            details: "Additional features include colored overlay comparisons between drawing revisions to quickly highlight changes, text search across drawing content, and balloon search functionality. The tool significantly reduced the time engineers spent on drawing checks while improving accuracy.",
+            tech: ["OCR", "Image Processing", "Drawing Verification"],
+        },
     ],
     design: [
         {
