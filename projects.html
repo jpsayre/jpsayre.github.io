@@ -105,9 +105,8 @@
                         '<div class="ledger-title">' + p.title + '</div>' +
                         '<div class="ledger-note">' + note + '</div>' +
                         (p.url ? '<div class="ledger-note"><a href="' + p.url + '" target="_blank">' + p.url.replace('https://', '') + '</a></div>' : '') +
-                        '<div class="ledger-details" id="detail-' + category + '-' + i + '">' + detailsHtml + '</div>' +
-                    '</div>' +
-                    imageHtml;
+                        '<div class="ledger-details" id="detail-' + category + '-' + i + '">' + detailsHtml + imageHtml + '</div>' +
+                    '</div>';
 
                 row.addEventListener("click", function(e) {
                     if (e.target.tagName === "A") return;

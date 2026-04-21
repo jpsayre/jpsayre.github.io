@@ -324,9 +324,9 @@ footer .footer-links {
 /* Ledger row */
 .ledger-row {
     display: grid;
-    grid-template-columns: 60px 1fr 200px;
+    grid-template-columns: 60px 1fr;
     gap: 28px;
-    align-items: start;
+    align-items: baseline;
     padding: 22px 0;
 }
 
@@ -354,8 +354,10 @@ footer .footer-links {
 }
 
 .ledger-image {
+    margin-top: 14px;
     border-radius: 4px;
     overflow: hidden;
+    max-width: 400px;
 }
 
 .ledger-image img {
