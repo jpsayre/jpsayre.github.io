@@ -46,5 +46,12 @@ const PROJECTS = {
             details: "",
             tech: [],
         },
+        {
+            title: "Handles",
+            image: "assets/projects/design/Handles.jpg",
+            description: "",
+            details: "",
+            tech: [],
+        },
     ],
 };
