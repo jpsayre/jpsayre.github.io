@@ -39,5 +39,12 @@ const PROJECTS = {
             details: "",
             tech: ["3D Printing"],
         },
+        {
+            title: "Desk",
+            image: "assets/projects/design/Desk.png",
+            description: "",
+            details: "",
+            tech: [],
+        },
     ],
 };
