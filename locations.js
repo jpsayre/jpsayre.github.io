@@ -61,4 +61,9 @@ const LOCATIONS = [
     { name: "Peoria, IL, USA", lat: 40.6936, lng: -89.5890 },
     { name: "Machu Picchu, Peru", lat: -13.1631, lng: -72.5450 },
     { name: "Cusco, Peru", lat: -13.5319, lng: -71.9675 },
+    { name: "Glasgow, Scotland", lat: 55.8642, lng: -4.2518 },
+    { name: "Vatnajökull National Park, Iceland", lat: 64.4000, lng: -16.9667 },
+    { name: "Boundary Waters, MN, USA", lat: 48.0500, lng: -91.5000 },
+    { name: "Traverse City, MI, USA", lat: 44.7631, lng: -85.6206 },
+    { name: "St. Louis, MO, USA", lat: 38.6270, lng: -90.1994 },
 ];
