@@ -59,4 +59,6 @@ const LOCATIONS = [
     { name: "Detroit, MI, USA", lat: 42.3314, lng: -83.0458 },
     { name: "Iowa City, IA, USA", lat: 41.6611, lng: -91.5302 },
     { name: "Peoria, IL, USA", lat: 40.6936, lng: -89.5890 },
+    { name: "Machu Picchu, Peru", lat: -13.1631, lng: -72.5450 },
+    { name: "Cusco, Peru", lat: -13.5319, lng: -71.9675 },
 ];
