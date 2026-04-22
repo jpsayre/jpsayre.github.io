@@ -98,7 +98,7 @@
 
                 var imageHtml = '';
                 if (p.image) {
-                    imageHtml = '<div class="ledger-image"><img src="' + p.image + '" alt="' + p.title + '" loading="lazy"></div>';
+                    imageHtml = '<div class="ledger-details-image"><img src="' + p.image + '" alt="' + p.title + '" loading="lazy"></div>';
                 }
 
                 row.innerHTML =
@@ -107,7 +107,7 @@
                         '<div class="ledger-title">' + p.title + '</div>' +
                         '<div class="ledger-note">' + note + '</div>' +
                         (p.url ? '<div class="ledger-note"><a href="' + p.url + '" target="_blank">' + p.url.replace('https://', '') + '</a></div>' : '') +
-                        '<div class="ledger-details" id="detail-' + category + '-' + i + '">' + detailsHtml + imageHtml + '</div>' +
+                        '<div class="ledger-details" id="detail-' + category + '-' + i + '"><div class="ledger-details-text">' + detailsHtml + '</div>' + imageHtml + '</div>' +
                     '</div>';
 
                 row.addEventListener("click", function(e) {
