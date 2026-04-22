@@ -19,6 +19,14 @@ const PROJECTS = {
             details: "Aggregated multiple data sources — telematics events, oil sampling lab results, work order history, daily machine summaries, and operational metrics — into 30-day grouped feature sets per machine. Explored supervised learning approaches (logistic regression, decision trees) and unsupervised clustering techniques (K-Means, Mean Shift, Agglomerative). Clustering proved most effective at surfacing failure patterns given the limited labeled failure data. Also developed a Mean Time Between Failure model and built custom data pipelines to pull and merge data from SQL Server and Teradata cloud databases.",
             tech: ["Python", "SQL (SQL Server, Teradata)", "R / Radiant", "Tableau", "Logistic Regression, Decision Trees, K-Means, Mean Shift, Agglomerative Clustering"],
         },
+        {
+            title: "Geofence Drift Detection",
+            note: "DBSCAN clustering on equipment position data",
+            image: "",
+            description: "Developed a DBSCAN clustering algorithm to detect geofence boundary drift by analyzing equipment position data across loading events. The system automatically alerted fleet managers when site boundaries needed updates — reducing misreported productivity metrics caused by machines operating outside stale geofence definitions.",
+            details: "",
+            tech: ["Python", "DBSCAN Clustering", "Geospatial Analysis"],
+        },
     ],
     engineering: [
         {
@@ -56,8 +64,8 @@ const PROJECTS = {
             image: "",
             url: "",
             description: "Owned end-to-end deployment of MineStar Fleet, MineStar Edge, and Cat Productivity telematics systems across 10+ customer sites with fleets of 5–15 machines each. This included parts procurement, system integration, installation, commissioning, and validation in harsh mining and construction environments.",
-            details: "Built Python-based monitoring tools and Tableau dashboards to track data quality, system health, and fleet performance — enabling proactive detection of hardware degradation and data gaps. Developed a DBSCAN clustering algorithm to detect geofence boundary drift by analyzing equipment position data, automatically alerting fleet managers when site boundaries needed updates. Architected satellite-based connectivity solutions (Starlink) for remote sites, enabling telemetry uplinks for geographically isolated assets.",
-            tech: ["Python", "SQL", "Tableau", "Telematics Hardware", "DBSCAN Clustering"],
+            details: "Built Python-based monitoring tools and Tableau dashboards to track data quality, system health, and fleet performance — enabling proactive detection of hardware degradation and data gaps. Architected satellite-based connectivity solutions (Starlink) for remote sites, enabling telemetry uplinks for geographically isolated assets.",
+            tech: ["Python", "SQL", "Tableau", "Telematics Hardware"],
         },
         {
             title: "3D Quality Visualization Tool",
