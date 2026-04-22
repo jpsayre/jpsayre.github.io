@@ -32,9 +32,9 @@
     </div>
 
     <div class="sub-nav" id="sub-nav">
-        <a data-tab="data" class="active">Data <span class="count"></span></a>
-        <a data-tab="engineering">Engineering <span class="count"></span></a>
-        <a data-tab="design">Design <span class="count"></span></a>
+        <a data-tab="data" class="active">Data</a>
+        <a data-tab="engineering">Engineering</a>
+        <a data-tab="design">Design</a>
     </div>
 
     <div class="project-section active" id="tab-data"></div>
@@ -124,15 +124,8 @@
         renderProjects("engineering", "tab-engineering");
         renderProjects("design", "tab-design");
 
-        // Set counts
-        var tabs = document.querySelectorAll("#sub-nav a");
-        tabs.forEach(function(tab) {
-            var key = tab.dataset.tab;
-            var count = (PROJECTS[key] || []).length;
-            tab.querySelector(".count").textContent = String(count).padStart(2, "0");
-        });
-
         // Tab switching
+        var tabs = document.querySelectorAll("#sub-nav a");
         tabs.forEach(function(tab) {
             tab.addEventListener("click", function() {
                 tabs.forEach(function(t) { t.classList.remove("active"); });
