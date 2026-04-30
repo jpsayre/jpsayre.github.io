@@ -68,4 +68,5 @@ const LOCATIONS = [
     { name: "St. Louis, MO, USA", lat: 38.6270, lng: -90.1994 },
     { name: "Hilo, HI, USA", lat: 19.7297, lng: -155.0900 },
     { name: "Kona, HI, USA", lat: 19.6400, lng: -155.9969 },
+    { name: "Iguazu Falls, Argentina", lat: -25.6953, lng: -54.4367 },
 ];
