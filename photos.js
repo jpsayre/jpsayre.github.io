@@ -17,4 +17,5 @@ const PHOTOS = [
     { file: "assets/photography/IMG_2625.jpg", title: "", location: "", description: "" },
     { file: "assets/photography/IMG_9931.jpg", title: "", location: "", description: "" },
     { file: "assets/photography/IMG_9945.jpg", title: "", location: "", description: "" },
+    { file: "assets/photography/IMG_5046.JPG", title: "", location: "", description: "" },
 ];
