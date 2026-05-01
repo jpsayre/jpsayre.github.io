@@ -99,6 +99,7 @@ const PROJECTS = {
             tech: ["OCR", "Image Processing", "Drawing Verification"],
         },
     ],
+    simulation: [],
     design: [
         {
             title: "3D Printed Headphones",

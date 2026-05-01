@@ -35,11 +35,13 @@
         <a data-tab="engineering" class="active">Engineering</a>
         <a data-tab="design">Design</a>
         <a data-tab="data">Data</a>
+        <a data-tab="simulation">Modeling/Simulation</a>
     </div>
 
     <div class="project-section active" id="tab-engineering"></div>
     <div class="project-section" id="tab-data"></div>
     <div class="project-section" id="tab-design"></div>
+    <div class="project-section" id="tab-simulation"></div>
 
     <footer>
         <span>© 2026 Jeff Sayre</span>
@@ -123,6 +125,7 @@
         renderProjects("data", "tab-data");
         renderProjects("engineering", "tab-engineering");
         renderProjects("design", "tab-design");
+        renderProjects("simulation", "tab-simulation");
 
         // Tab switching
         var tabs = document.querySelectorAll("#sub-nav a");
