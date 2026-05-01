@@ -136,6 +136,11 @@
                 return;
             }
 
+            var hint = document.createElement("p");
+            hint.className = "sim-hint";
+            hint.textContent = "Click any project to interact with it.";
+            container.appendChild(hint);
+
             var grid = document.createElement("div");
             grid.className = "sim-grid";
 
