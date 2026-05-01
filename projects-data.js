@@ -99,7 +99,15 @@ const PROJECTS = {
             tech: ["OCR", "Image Processing", "Drawing Verification"],
         },
     ],
-    simulation: [],
+    simulation: [
+        {
+            title: "Robotic Arm",
+            thumbnail: "assets/projects/simulation/robotic-arm.png",
+            note: "Interactive servo-controlled arm",
+            url: "experiment.html",
+            type: "simulation",
+        },
+    ],
     design: [
         {
             title: "3D Printed Headphones",

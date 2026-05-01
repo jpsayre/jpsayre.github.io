@@ -125,7 +125,40 @@
         renderProjects("data", "tab-data");
         renderProjects("engineering", "tab-engineering");
         renderProjects("design", "tab-design");
-        renderProjects("simulation", "tab-simulation");
+
+        // Simulation tab uses a card grid instead of ledger rows
+        (function() {
+            var container = document.getElementById("tab-simulation");
+            var items = PROJECTS.simulation;
+
+            if (!items || items.length === 0) {
+                container.innerHTML = '<p class="empty-state">Projects coming soon.</p>';
+                return;
+            }
+
+            var grid = document.createElement("div");
+            grid.className = "sim-grid";
+
+            items.forEach(function(item) {
+                var card = document.createElement("a");
+                card.className = "sim-card";
+                card.href = item.url;
+
+                var badge = item.type === "simulation" ? "Interactive" : "3D Model";
+
+                card.innerHTML =
+                    '<img src="' + item.thumbnail + '" alt="' + item.title + '" loading="lazy">' +
+                    '<div class="sim-card-badge">' + badge + '</div>' +
+                    '<div class="sim-card-overlay">' +
+                        '<div class="sim-card-title">' + item.title + '</div>' +
+                        '<div class="sim-card-note">' + (item.note || '') + '</div>' +
+                    '</div>';
+
+                grid.appendChild(card);
+            });
+
+            container.appendChild(grid);
+        })();
 
         // Tab switching
         var tabs = document.querySelectorAll("#sub-nav a");
