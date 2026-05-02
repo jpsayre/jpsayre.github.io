@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotic Arm - Jeff Sayre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .sim-page {
+            display: flex;
+            gap: 32px;
+            padding: 0 40px 48px;
+            max-width: 1400px;
+        }
+        #viewer {
+            flex: 1;
+            height: 600px;
+            background: #1a1a1a;
+            border-radius: 6px;
+            cursor: grab;
+        }
+        #viewer:active { cursor: grabbing; }
+
+        .controls {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        .control-group {
+            margin-bottom: 20px;
+        }
+        .control-group label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #8a8778;
+            margin-bottom: 6px;
+        }
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: #5a7a5a;
+        }
+        .control-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #c8c4b8;
+            margin-top: 2px;
+            text-align: right;
+        }
+        .control-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: #2a2820;
+            color: #c8c4b8;
+            border: 1px solid #3a3830;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .control-btn:hover { background: #3a3830; }
+        .control-btn.active { background: #5a7a5a; border-color: #5a7a5a; }
+        .joint-color {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .back-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #8a8778;
+            text-decoration: none;
+            padding: 0 40px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .back-link:hover { color: #c8c4b8; }
+        .keyboard-hint {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: #5a5848;
+            margin-top: 12px;
+            line-height: 1.8;
+        }
+        kbd {
+            background: #2a2820;
+            border: 1px solid #3a3830;
+            border-radius: 3px;
+            padding: 1px 5px;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">
+            <a href="index.html" class="name">Jeff Sayre</a>
+            <span class="subtitle">Chicago &middot; engineer & data scientist</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="photography.html">Photography</a>
+            <a href="travels.html">Travels</a>
+            <a href="blog.html">Blog</a>
+        </div>
+    </nav>
+
+    <a href="projects.html" class="back-link">&larr; Back to projects</a>
+
+    <div class="title-block">
+        <div class="section-label">&sect; Modeling/Simulation</div>
+        <h1 class="page-title">4-DOF robotic arm.</h1>
+    </div>
+
+    <div class="sim-page">
+        <div id="viewer"></div>
+        <div class="controls">
+            <div class="control-group">
+                <label><span class="joint-color" style="background:#e76f51"></span>J1 &mdash; Base Rotation</label>
+                <input type="range" id="j0" min="-180" max="180" value="0" step="1">
+                <div class="control-value" id="j0-val">0&deg;</div>
+            </div>
+            <div class="control-group">
+                <label><span class="joint-color" style="background:#f4a261"></span>J2 &mdash; Shoulder</label>
+                <input type="range" id="j1" min="0" max="90" value="0" step="1">
+                <div class="control-value" id="j1-val">0&deg;</div>
+            </div>
+            <div class="control-group">
+                <label><span class="joint-color" style="background:#e9c46a"></span>J3 &mdash; Elbow</label>
+                <input type="range" id="j2" min="-90" max="90" value="0" step="1">
+                <div class="control-value" id="j2-val">0&deg;</div>
+            </div>
+            <div class="control-group">
+                <label><span class="joint-color" style="background:#2a9d8f"></span>J4 &mdash; Wrist</label>
+                <input type="range" id="j3" min="-90" max="90" value="0" step="1">
+                <div class="control-value" id="j3-val">0&deg;</div>
+            </div>
+            <div class="control-group">
+                <label><span class="joint-color" style="background:#264653"></span>Gripper</label>
+                <input type="range" id="gripper" min="0" max="45" value="0" step="1">
+                <div class="control-value" id="gripper-val">0&deg;</div>
+            </div>
+
+            <div class="control-group">
+                <button class="control-btn" id="btn-home">Reset</button>
+            </div>
+
+            <div class="keyboard-hint">
+                Drag to orbit &middot; Scroll to zoom<br>
+                Sliders control each joint
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>&copy; 2026 Jeff Sayre</span>
+        <div class="footer-links">
+            <span>jpsayre@gmail.com</span>
+            <a href="https://www.linkedin.com/in/jeff-sayre-b3ab8924/" target="_blank">linkedin.com/in/jeff-sayre</a>
+        </div>
+    </footer>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+
+        // --- Joint data from MuJoCo XML ---
+        // Each joint: { pivot: [x,y,z] in meters, axis: [x,y,z] normalized }
+        const JOINTS = [
+            { name: "Base",     pivot: [0.002842, -0.003524, 0.059829],  axis: [0.04737, -0.05873, 0.99715] },
+            { name: "Shoulder", pivot: [0.007058, -0.008926, 0.149568],  axis: [-0.37392, -0.92665, -0.03874] },
+            { name: "Elbow",    pivot: [0.229375, -0.095512, 0.074881], axis: [0.88927, -0.34634, -0.29875] },
+            { name: "Wrist",    pivot: [0.299383, -0.112110, 0.051430], axis: [-0.33038, -0.93809, 0.10411] },
+            { name: "Grip L",   pivot: [0.338201, -0.153109, 0.045322], axis: [0.01121, 0.10639, 0.99426] },
+            { name: "Grip R",   pivot: [0.349764, -0.120275, 0.041678], axis: [0.01121, 0.10639, 0.99426] },
+        ];
+
+        // Body mesh files (in hierarchy order from XML)
+        const BODIES = [
+            { mesh: "Body.obj",    joint: null },      // Base (fixed)
+            { mesh: "Body001.obj", joint: 0 },         // Rotating base
+            { mesh: "Body002.obj", joint: 1 },         // Upper arm
+            { mesh: "Body003.obj", joint: 2 },         // Forearm
+            { mesh: "Body004.obj", joint: 3 },         // Wrist
+            { mesh: "Body006.obj", joint: 4 },         // Gripper L
+            { mesh: "Body005.obj", joint: 5 },         // Gripper R
+        ];
+
+        const SCALE = 0.001;
+
+        // --- Scene setup ---
+        const container = document.getElementById('viewer');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x1a1a1a);
+
+        const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.001, 10);
+        camera.position.set(0.6, 0.45, 0.55);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.target.set(0.15, 0.05, 0.05);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.update();
+
+        // Lighting
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+        const dir1 = new THREE.DirectionalLight(0xffffff, 1.0);
+        dir1.position.set(0.3, 0.5, 0.4);
+        dir1.castShadow = true;
+        scene.add(dir1);
+        const dir2 = new THREE.DirectionalLight(0xffffff, 0.3);
+        dir2.position.set(-0.3, -0.1, 0.3);
+        scene.add(dir2);
+
+        // Ground
+        const ground = new THREE.Mesh(
+            new THREE.PlaneGeometry(1, 1),
+            new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.9 })
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.001;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        const grid = new THREE.GridHelper(0.6, 30, 0x444444, 0x333333);
+        scene.add(grid);
+
+        // Z-up to Y-up conversion
+        const rootGroup = new THREE.Group();
+        rootGroup.rotation.x = -Math.PI / 2;
+        scene.add(rootGroup);
+
+        // --- Build joint hierarchy ---
+        // Each joint gets a pivot group that rotates around its axis
+        const pivotGroups = [];
+        const meshGroups = [];  // where meshes attach (inside pivot groups)
+
+        // Create pivot groups for each joint
+        JOINTS.forEach(function(j, i) {
+            const pivot = new THREE.Group();
+            pivot.position.set(j.pivot[0], j.pivot[1], j.pivot[2]);
+            pivotGroups.push(pivot);
+        });
+
+        // Build the hierarchy: each joint's pivot is a child of the previous joint
+        // But we need to account for nested positioning
+        // Joint 0 (base) → child of rootGroup
+        rootGroup.add(pivotGroups[0]);
+        // Joint 1 (shoulder) → child of joint 0
+        pivotGroups[0].add(pivotGroups[1]);
+        pivotGroups[1].position.set(
+            JOINTS[1].pivot[0] - JOINTS[0].pivot[0],
+            JOINTS[1].pivot[1] - JOINTS[0].pivot[1],
+            JOINTS[1].pivot[2] - JOINTS[0].pivot[2]
+        );
+        // Joint 2 (elbow) → child of joint 1
+        pivotGroups[1].add(pivotGroups[2]);
+        pivotGroups[2].position.set(
+            JOINTS[2].pivot[0] - JOINTS[1].pivot[0],
+            JOINTS[2].pivot[1] - JOINTS[1].pivot[1],
+            JOINTS[2].pivot[2] - JOINTS[1].pivot[2]
+        );
+        // Joint 3 (wrist) → child of joint 2
+        pivotGroups[2].add(pivotGroups[3]);
+        pivotGroups[3].position.set(
+            JOINTS[3].pivot[0] - JOINTS[2].pivot[0],
+            JOINTS[3].pivot[1] - JOINTS[2].pivot[1],
+            JOINTS[3].pivot[2] - JOINTS[2].pivot[2]
+        );
+        // Joint 4 (gripper L) → child of joint 3
+        pivotGroups[3].add(pivotGroups[4]);
+        pivotGroups[4].position.set(
+            JOINTS[4].pivot[0] - JOINTS[3].pivot[0],
+            JOINTS[4].pivot[1] - JOINTS[3].pivot[1],
+            JOINTS[4].pivot[2] - JOINTS[3].pivot[2]
+        );
+        // Joint 5 (gripper R) → child of joint 3
+        pivotGroups[3].add(pivotGroups[5]);
+        pivotGroups[5].position.set(
+            JOINTS[5].pivot[0] - JOINTS[3].pivot[0],
+            JOINTS[5].pivot[1] - JOINTS[3].pivot[1],
+            JOINTS[5].pivot[2] - JOINTS[3].pivot[2]
+        );
+
+        // --- Load meshes ---
+        const loader = new OBJLoader();
+        const basePath = 'assets/models/robot-arm/';
+
+        const partColors = [
+            0x8a8a8a,  // Base - dark grey
+            0x9a9a9a,  // Rotating base
+            0x7a9abf,  // Upper arm - blue
+            0x7a9abf,  // Forearm - blue
+            0x9aaa9a,  // Wrist - green tint
+            0xbf8a7a,  // Gripper L - warm
+            0xbf8a7a,  // Gripper R - warm
+        ];
+
+        // Track loaded meshes for joint rotation
+        const loadedMeshes = new Array(BODIES.length).fill(null);
+
+        BODIES.forEach(function(body, i) {
+            loader.load(basePath + body.mesh, function(obj) {
+                obj.scale.set(SCALE, SCALE, SCALE);
+
+                // Apply material
+                obj.traverse(function(child) {
+                    if (child.isMesh) {
+                        child.material = new THREE.MeshStandardMaterial({
+                            color: partColors[i],
+                            metalness: 0.3,
+                            roughness: 0.6,
+                        });
+                        child.castShadow = true;
+                    }
+                });
+
+                loadedMeshes[i] = obj;
+
+                if (body.joint === null) {
+                    // Base — fixed to root
+                    rootGroup.add(obj);
+                } else {
+                    // Attached to a joint pivot group
+                    // Offset mesh so the joint pivot is at the group's origin
+                    var j = JOINTS[body.joint];
+                    obj.position.set(-j.pivot[0] * SCALE * 1000, -j.pivot[1] * SCALE * 1000, -j.pivot[2] * SCALE * 1000);
+                    // Wait, scale is already applied. The mesh vertices are in mm,
+                    // scaled by 0.001 to meters. The pivot is in meters.
+                    // So offset = -pivot (in meters) / scale... no.
+                    // The mesh is scaled by SCALE. Vertices are in mm.
+                    // After scaling, they're in meters. The pivot group is at the pivot in meters.
+                    // We need the mesh offset so the pivot point in the mesh aligns with (0,0,0) of the group.
+                    // Offset = -pivot (but the mesh is already scaled)
+                    obj.position.set(-j.pivot[0], -j.pivot[1], -j.pivot[2]);
+
+                    pivotGroups[body.joint].add(obj);
+                }
+            });
+        });
+
+        // --- Joint rotation function ---
+        function setJointAngle(jointIndex, angleDeg) {
+            var j = JOINTS[jointIndex];
+            var axis = new THREE.Vector3(j.axis[0], j.axis[1], j.axis[2]).normalize();
+            var angle = THREE.MathUtils.degToRad(angleDeg);
+
+            // Reset rotation and apply around the joint's axis
+            pivotGroups[jointIndex].quaternion.identity();
+            pivotGroups[jointIndex].quaternion.setFromAxisAngle(axis, angle);
+        }
+
+        // --- State ---
+        var jointAngles = [0, 0, 0, 0, 0, 0];
+        var targetAngles = [0, 0, 0, 0, 0, 0];
+        var demoMode = false;
+        var demoTime = 0;
+
+        // --- UI ---
+        var sliders = [
+            document.getElementById('j0'),
+            document.getElementById('j1'),
+            document.getElementById('j2'),
+            document.getElementById('j3'),
+            document.getElementById('gripper'),
+        ];
+        var displays = [
+            document.getElementById('j0-val'),
+            document.getElementById('j1-val'),
+            document.getElementById('j2-val'),
+            document.getElementById('j3-val'),
+            document.getElementById('gripper-val'),
+        ];
+
+        sliders.forEach(function(slider, i) {
+            slider.addEventListener('input', function() {
+                demoMode = false;
+                var val = parseFloat(this.value);
+                if (i < 4) {
+                    targetAngles[i] = val;
+                } else {
+                    // Gripper: joint 4 and 5 move opposite
+                    // Slider at 45 = open, 0 = closed
+                    targetAngles[4] = -val;
+                    targetAngles[5] = val;
+                }
+            });
+        });
+
+        document.getElementById('btn-home').addEventListener('click', function() {
+            demoMode = false;
+            targetAngles = [0, 0, 0, 0, 0, 0];
+            sliders.forEach(function(s) { s.value = 0; });
+        });
+
+
+        // --- Animation loop ---
+        var clock = new THREE.Clock();
+        var SPRING = 6.0;
+        var DAMP = 0.82;
+        var velocities = [0, 0, 0, 0, 0, 0];
+
+        function animate() {
+            requestAnimationFrame(animate);
+            var dt = Math.min(clock.getDelta(), 0.05);
+
+            // Demo mode — automated motion sequence
+            if (demoMode) {
+                demoTime += dt;
+                targetAngles[0] = 60 * Math.sin(demoTime * 0.5);
+                targetAngles[1] = 30 * Math.sin(demoTime * 0.7 + 1);
+                targetAngles[2] = 45 * Math.sin(demoTime * 0.4 + 2);
+                targetAngles[3] = 30 * Math.sin(demoTime * 0.6 + 3);
+                var gripVal = 20 * Math.abs(Math.sin(demoTime * 0.8)) + 15;
+                targetAngles[4] = -gripVal;
+                targetAngles[5] = gripVal;
+
+                sliders[0].value = targetAngles[0];
+                sliders[1].value = targetAngles[1];
+                sliders[2].value = targetAngles[2];
+                sliders[3].value = targetAngles[3];
+                sliders[4].value = targetAngles[4];
+            }
+
+            // Spring-damper for each joint
+            for (var i = 0; i < 6; i++) {
+                var error = targetAngles[i] - jointAngles[i];
+                velocities[i] += error * SPRING * dt * 60;
+                velocities[i] *= DAMP;
+                jointAngles[i] += velocities[i] * dt;
+                setJointAngle(i, jointAngles[i]);
+            }
+
+            // Update displays
+            for (var i = 0; i < 5; i++) {
+                var val = i < 4 ? jointAngles[i] : jointAngles[4];
+                displays[i].textContent = val.toFixed(0) + '\u00B0';
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', function() {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+</body>
+</html>

@@ -101,10 +101,10 @@ const PROJECTS = {
     ],
     simulation: [
         {
-            title: "Robotic Arm",
+            title: "4-DOF Robotic Arm",
             thumbnail: "assets/projects/simulation/robotic-arm.png",
-            note: "Interactive servo-controlled arm",
-            url: "experiment.html",
+            note: "6 joints · interactive control · spring-damper physics",
+            url: "robot-arm.html",
             type: "simulation",
         },
     ],
