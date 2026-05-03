@@ -69,4 +69,5 @@ const LOCATIONS = [
     { name: "Hilo, HI, USA", lat: 19.7297, lng: -155.0900 },
     { name: "Kona, HI, USA", lat: 19.6400, lng: -155.9969 },
     { name: "Iguazu Falls, Argentina", lat: -25.6953, lng: -54.4367 },
+    { name: "Colonia del Sacramento, Uruguay", lat: -34.4626, lng: -57.8400 },
 ];
