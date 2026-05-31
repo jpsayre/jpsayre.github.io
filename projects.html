@@ -35,13 +35,13 @@
         <a data-tab="engineering" class="active">Engineering</a>
         <a data-tab="design">Design</a>
         <a data-tab="data">Data</a>
-        <a data-tab="simulation">Modeling/Simulation</a>
+        <!-- <a data-tab="simulation">Modeling/Simulation</a> -->
     </div>
 
     <div class="project-section active" id="tab-engineering"></div>
     <div class="project-section" id="tab-data"></div>
     <div class="project-section" id="tab-design"></div>
-    <div class="project-section" id="tab-simulation"></div>
+    <!-- <div class="project-section" id="tab-simulation"></div> -->
 
     <footer>
         <span>© 2026 Jeff Sayre</span>
@@ -126,7 +126,7 @@
         renderProjects("engineering", "tab-engineering");
         renderProjects("design", "tab-design");
 
-        // Simulation tab uses a card grid instead of ledger rows
+        /* Simulation tab — commented out for now
         (function() {
             var container = document.getElementById("tab-simulation");
             var items = PROJECTS.simulation;
@@ -164,6 +164,7 @@
 
             container.appendChild(grid);
         })();
+        */
 
         // Tab switching
         var tabs = document.querySelectorAll("#sub-nav a");
